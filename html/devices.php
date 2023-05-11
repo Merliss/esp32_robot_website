@@ -1,3 +1,12 @@
+<?php
+session_start();
+if(!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] == false){
+        header("location: index.php");
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,11 +65,11 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li><a href="index.php">Home</a></li>
-        <li class="active"><a href="about.php">About</a></li>
-        <li><a href="contact.php">Contact</a></li>
+        <li><a href="charts.php">Charts</a></li>
+        <li class="active"><a href="devices.php">Devices</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="login_page.php"><span class="glyphicon glyphicon-log-in"></span> Sign in</a></li>
+        <li><a href='logout_script.php'><span class='glyphicon glyphicon-log-out'></span> Sign out</a></li>
       </ul>
     </div>
   </div>
@@ -69,11 +78,14 @@
 <div class="container-fluid text-center">  
   <div class="row content">
     <div class="col-sm-12 text-left"> 
-      <h1>About us:</h1>
+      <h1>Contact us!</h1>
+      
       <!-- <p>Our venture offers many IoT devices such as weather stations, home alarm systems and so on.</p> -->
     </div>
     </div>
   </div>
 </div>
+
 </body>
 </html>
+

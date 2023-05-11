@@ -56,15 +56,30 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li class="active"><a href="index.php">Home</a></li>
-        <li><a href="about.php">About</a></li>
-        <li><a href="contact.php">Contact</a></li>
+	<?php
+		session_start();
+                if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']){
+                        echo "<li><a href='charts.php'>Charts</a></li>";
+        		echo "<li><a href='devices.php'>Devices</a></li>";
+                }
+
+	?>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="login_page.php"><span class="glyphicon glyphicon-log-in"></span> Sign in</a></li>
+	<?php
+		if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']){
+			echo "<li><a href='logout_script.php'><span class='glyphicon glyphicon-log-out'></span> Sign out</a></li>";
+		}
+		else{
+			echo "<li><a href='login_page.php'><span class='glyphicon glyphicon-log-in'></span> Sign in</a></li>";
+	
+		}
+	?>
       </ul>
     </div>
   </div>
 </nav>
+
 <div class="container-fluid text-center">  
   <div class="row content">
     <div class="col-sm-12 text-left"> 
@@ -79,29 +94,16 @@
 
 <div class="container">
 
-	<?php
-        require_once("../../db_connection_data.php");
-  	$pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-  	$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	
-	$login = "root";
+<?php
 
-  	// $stmt = $pdo->query("SELECT * FROM DEVICE WHERE 1");
-  	$query = $pdo->prepare("SELECT * FROM SYSTEM_USER WHERE LOGIN = :login");
-	$query->execute(['login'=> $login]); 
- 
-	while ($row = $query->fetch()) {
-    		echo  $row['EMAIL'] . "<br>";
-  	}
-
-	$pdo = null;
-	?>
-
-
-    <h2>Sign up for free</h2>
-    <form action="/action_page.php">
-        <div class="form-group">
-            <label for="name">Name:</label>
+if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']){
+	echo "<h1>AKTUALNE DANE I STATUSY Z URZADZENIA</h1>";
+}
+else{
+	 echo '<h2>Sign up for free</h2>
+	   <form action="/action_page.php">
+         <div class="form-group">
+           <label for="name">Name:</label>
             <input type="text" class="form-control" id="name" placeholder="Enter your name" name="name">
           </div>
           <div class="form-group">
@@ -121,7 +123,11 @@
         <input type="password" class="form-control" id="pwd" placeholder="Enter your password" name="pwd">
       </div>
       <button type="submit" class="btn btn-default">Submit</button>
-    </form>
+    </form>';
+
+}
+
+?>
   </div>
 
 

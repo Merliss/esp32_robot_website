@@ -1,12 +1,3 @@
-<?php
-session_start();
-if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true){
-        header("location: index.php");
-}
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -89,7 +80,7 @@ if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true){
 		
             </div>
         </div>
-	<?php session_start(); if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == 1) header('location:admin_page.php'); ?>
+	<?php session_start(); if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == 1) header('location:index.php'); ?>
 
 </body>
 </html>

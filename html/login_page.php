@@ -1,3 +1,12 @@
+<?php
+session_start();
+if(!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] == false){
+        header("location: index.php");
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,8 +65,6 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li><a href="index.php">Home</a></li>
-        <li><a href="about.php">About</a></li>
-        <li ><a href="contact.php">Contact</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="login_page.php"><span class="glyphicon glyphicon-log-in"></span> Sign in</a></li>

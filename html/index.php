@@ -81,15 +81,20 @@
 
 	<?php
         require_once("../../db_connection_data.php");
-        $conn = mysqli_connect($servername, $username, $password, $dbname);
-        $sql = 'SELECT * FROM DEVICE WHERE 1';
-        $result = mysqli_query($conn, $sql);
+  	$pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+  	$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	
+	$login = "root";
 
-        while($row = mysqli_fetch_assoc($result)){
-                echo $row['DEVICE_ID'] .$row['USER_ID'];
-        }
+  	// $stmt = $pdo->query("SELECT * FROM DEVICE WHERE 1");
+  	$query = $pdo->prepare("SELECT * FROM SYSTEM_USER WHERE LOGIN = :login");
+	$query->execute(['login'=> $login]); 
+ 
+	while ($row = $query->fetch()) {
+    		echo  $row['EMAIL'] . "<br>";
+  	}
 
-        mysqli_close($conn);
+	$pdo = null;
 	?>
 
 

@@ -68,7 +68,7 @@
         <div class="container">
 		<div class="col-md-12 mx-auto">
                 <h3 class="text-center mb-4">Zaloguj się do systemu</h3>
-                <form method="post" action="login.php">
+                <form method="post" action="login_script.php">
                     <div class="form-group">
                         <label for="username">Nazwa użytkownika:</label>
                         <input type="text" class="form-control" id="username" name="username" placeholder="Podaj nazwę użytkownika">

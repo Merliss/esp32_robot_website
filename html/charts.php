@@ -77,7 +77,7 @@ if(!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] == false){
 <div class="container-fluid text-center">  
   <div class="row content">
     <div class="col-sm-12 text-left"> 
-      <h1>About us:</h1>
+      <h1>CHARTS</h1>
       <!-- <p>Our venture offers many IoT devices such as weather stations, home alarm systems and so on.</p> -->
     </div>
     </div>

@@ -65,17 +65,17 @@
 </nav>
         <div class="container">
 		<div class="col-md-12 mx-auto">
-                <h3 class="text-center mb-4">Zaloguj się do systemu</h3>
+                <h3 class="text-center mb-4">Sign in</h3>
                 <form method="post" action="login_script.php">
                     <div class="form-group">
-                        <label for="username">Nazwa użytkownika:</label>
-                        <input type="text" class="form-control" id="username" name="username" placeholder="Podaj nazwę użytkownika">
+                        <label for="username">Login:</label>
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Enter your login">
                     </div>
                     <div class="form-group">
-                        <label for="password">Hasło:</label>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Podaj hasło">
+                        <label for="password">Password:</label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password">
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block">Zaloguj</button>
+                    <button type="submit" class="btn btn-primary btn-block">Sign in</button>
                 </form>
 		
             </div>

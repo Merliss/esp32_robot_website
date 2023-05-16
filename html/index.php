@@ -84,7 +84,6 @@
   <div class="row content">
     <div class="col-sm-12 text-left"> 
       <h1>Welcome to your management dashboard!</h1>
-      <p>Please sign in to proceed to your devices or sign up and get yourself a device :)</p>
       <hr>
       <!-- <p>Our venture offers many IoT devices such as weather stations, home alarm systems and so on.</p> -->
     </div>
@@ -97,7 +96,7 @@
 <?php
 
 if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']){
-	echo "<h1>AKTUALNE DANE I STATUSY Z URZADZENIA</h1>";
+	echo "<h1>Device data and status</h1>";
 }
 else{
 	 echo '<h2>Sign up for free</h2>

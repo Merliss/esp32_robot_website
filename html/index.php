@@ -61,6 +61,7 @@
                 if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']){
                         echo "<li><a href='charts.php'>Charts</a></li>";
         		echo "<li><a href='devices.php'>Devices</a></li>";
+			echo "<li><a href='camera_page.php'>Cam view</a></li>";
                 }
 
 	?>

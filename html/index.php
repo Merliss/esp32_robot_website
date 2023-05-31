@@ -40,12 +40,18 @@
       .row.content {height:auto;} 
     }
 
-	.container {
+.container {
   position: relative;
   overflow: hidden;
   width: 100%;
   padding-top: 100%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
   padding-bottom: 56.25%;
+}
+
+.container1{
+position: relative;
+  overflow: hidden;
+  width: 100%;
 }
 
 /* Then style the iframe to fit in the container div with full height and width */
@@ -100,16 +106,17 @@
   </div>
 </nav>
 
-<div class="container">
-
 <?php
 
 if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']){
+	echo '<div class="container">';
+
 	echo "<h1>Data visualization</h1>";
 	echo '<iframe id="dashboardFrame" class="responsive-iframe" src="http://159.65.116.172:1880/ui" frameborder="0"></iframe>';
+	echo '</div>';
 }
 else{
-	 echo '<h2>Sign up for free</h2>
+	 echo '<div class="container1"><h2>Sign up for free</h2>
 	   <form action="/action_page.php">
          <div class="form-group">
            <label for="name">Name:</label>
@@ -132,12 +139,11 @@ else{
         <input type="password" class="form-control" id="pwd" placeholder="Enter your password" name="pwd">
       </div>
       <button type="submit" class="btn btn-default">Submit</button>
-    </form>';
+    </form></div>';
 
 }
 
 ?>
-  </div>
 
 
 </body>

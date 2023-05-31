@@ -17,6 +17,16 @@ if(!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] == false){
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <style>
+    .font_size{
+	font-size: 16px;
+    }
+    #dashboardFrame {
+    width: 100%;
+    height: 100%;
+    border: none;
+    overflow: hidden;
+    background-color: white;
+    }
     /* Remove the navbar's default margin-bottom and rounded borders */ 
     .navbar {
       margin-bottom: 0;
@@ -80,7 +90,6 @@ if(!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] == false){
   <div class="row content">
     <div class="col-sm-12 text-left"> 
       <h1>Device</h1>
-      
       <!-- <p>Our venture offers many IoT devices such as weather stations, home alarm systems and so on.</p> -->
     </div>
     </div>

@@ -8,6 +8,11 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <style>
+	body, html {
+      height: auto;
+      margin: 0;
+      padding: 0;
+    }
     /* Remove the navbar's default margin-bottom and rounded borders */ 
     .navbar {
       margin-bottom: 0;
@@ -39,6 +44,24 @@
       }
       .row.content {height:auto;} 
     }
+
+	.container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 100%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+}
+
+/* Then style the iframe to fit in the container div with full height and width */
+.responsive-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
   </style>
 </head>
 <body>
@@ -81,23 +104,13 @@
   </div>
 </nav>
 
-<div class="container-fluid text-center">  
-  <div class="row content">
-    <div class="col-sm-12 text-left"> 
-      <h1>Welcome to your management dashboard!</h1>
-      <hr>
-      <!-- <p>Our venture offers many IoT devices such as weather stations, home alarm systems and so on.</p> -->
-    </div>
-    </div>
-  </div>
-</div>
-
 <div class="container">
 
 <?php
 
 if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']){
-	echo "<h1>Device data and status</h1>";
+	echo "<h1>Data visualization</h1>";
+	echo '<iframe id="dashboardFrame" class="responsive-iframe" src="http://159.65.116.172:1880/ui" frameborder="0"></iframe>';
 }
 else{
 	 echo '<h2>Sign up for free</h2>

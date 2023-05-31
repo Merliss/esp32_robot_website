@@ -30,11 +30,6 @@
     }
     
     /* Set black background color, white text and some padding */
-    footer {
-      background-color: #555;
-      color: white;
-      padding: 15px;
-    }
     
     /* On small screens, set height to 'auto' for sidenav and grid */
     @media screen {
@@ -50,6 +45,7 @@
   overflow: hidden;
   width: 100%;
   padding-top: 100%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+  padding-bottom: 56.25%;
 }
 
 /* Then style the iframe to fit in the container div with full height and width */

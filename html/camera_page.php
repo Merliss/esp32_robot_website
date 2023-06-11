@@ -6,7 +6,6 @@ if(!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] == false){
 
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,7 +33,7 @@ if(!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] == false){
       height: 100%;
     }
     
-    /* Set black background color, white text and some padding */
+    /* Set black background color, white text, and some padding */
     footer {
       background-color: #555;
       color: white;
@@ -49,10 +48,17 @@ if(!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] == false){
       }
       .row.content {height:auto;} 
     }
+
+    /* Center the video element */
+    #camera-stream {
+      display: block;
+      margin: 0 auto;
+    }
   </style>
 </head>
 <body>
-
+<!-- Your PHP code -->
+<!-- Navigation bar -->
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -76,32 +82,47 @@ if(!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] == false){
     </div>
   </div>
 </nav>
-  
-<div class="container mx-auto my-5 col-md-12">
-      <img id="camera-stream" alt="camera view"/>
-     </div> 
 
-<div class="container-fluid text-center">  
-  <div class="row content">
-    <div class="col-sm-12 text-left"> 
-      <!-- <p>Our venture offers many IoT devices such as weather stations, home alarm systems and so on.</p> -->
-    </div>
-    </div>
-  </div>
+<!-- Video element -->
+<div class="container mx-auto">
+  <img id="camera-stream" alt="camera view"/>
 </div>
+
+<!-- Remaining HTML content -->
+<div class="container-fluid text-center">  
+  <!-- Content -->
+</div>
+
+<!-- JavaScript code -->
 <script>
+	function generateRandomString(length) {
+  var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  var result = '';
+  
+  for (var i = 0; i < length; i++) {
+    var randomIndex = Math.floor(Math.random() * characters.length);
+    result += characters.charAt(randomIndex);
+  }
+  
+  return result;
+}
  // Connect to MQTT broker
-      var client = new Paho.MQTT.Client("159.65.116.172", 9001, "webClient");
+      var client = new Paho.MQTT.Client("159.65.116.172", 9001, generateRandomString(10));
       var options = {
         timeout: 3,
 	onSuccess: onConnect
       };
+      client.onConnectionLost = onDisconnect;
 
       client.connect({
-        userName: "WeatherStation",
-        password: "ws17bezstA",
         ... options
       });
+	function onDisconnect(responseObject) {
+	  if (responseObject.errorCode !== 0) {
+	    console.log("Connection lost: " + responseObject.errorMessage);
+	    client.connect({ ... options});
+	  }
+	}
       function sendMessage(topic, msg) {
         var payload = new Paho.MQTT.Message(msg);
         payload.destinationName = topic;
@@ -132,4 +153,3 @@ if(!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] == false){
 </script>
 </body>
 </html>
-

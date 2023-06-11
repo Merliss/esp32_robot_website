@@ -67,8 +67,8 @@ function drawChart(data) {
       options: {
         scales: {
           y: {
-            min: -30,
-            max: 40,
+            min: -20,
+            max: 50,
             ticks: {
               callback: function(value, index, values) {
                 return value + ' C';
@@ -125,7 +125,7 @@ function drawChart(data) {
         labels: data.time_stamp,
         datasets: [{
           label: 'Pressure',
-          data: data.pressure,
+          data: data.pressure.map(val => val/100),
           backgroundColor: 'blue',
           borderColor: 'blue'
         }]
@@ -157,7 +157,7 @@ function drawChart(data) {
         labels: data.time_stamp,
         datasets: [{
           label: 'Air Quality',
-          data: data.air_quality,
+          data: data.air_quality.map(val => val * 100),
           backgroundColor: 'black',
           borderColor: 'black'
         }]

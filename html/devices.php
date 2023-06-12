@@ -175,16 +175,26 @@ function generateRandomString(length) {
       function onConnect() {
         console.log("Connected to MQTT broker.");
 	    client.subscribe("ws_init/dev_settings");
+	    sendMessage("ws_init", "dummy");
       }
       
       // Display received messages
       client.onMessageArrived = function(message) {
+	if(message.destinationName == "ws_init/dev_settings"){
+		data = JSON.parse(message.payloadString);
+		console.log(data);
+
+		document.getElementById("input1").value = data.device_id;
+		document.getElementById("input2").value = data.alarm_high;
+		document.getElementById("input3").value = data.alarm_low;
+		document.getElementById("input4").value = data.alarm_set;
+		document.getElementById("input5").value = data.logging_config;
+		document.getElementById("input6").value = data.graph_config;
+	}
     }
 
 document.getElementById("settings").addEventListener("submit", function(event) {
   event.preventDefault();
-
-  console.log("Hello");
 
   var dev_id = parseInt(document.getElementById("input1").value);
   var hi_tr = parseInt(document.getElementById("input2").value);

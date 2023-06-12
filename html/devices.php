@@ -79,6 +79,8 @@ if(!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] == false){
         <li><a href="charts.php">Charts</a></li>
         <li class="active"><a href="devices.php">Devices</a></li>
 	<li><a href="camera_page.php">Cam view</a></li>
+	<li><a href="weather.php">Forecast</a></li>
+
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href='logout_script.php'><span class='glyphicon glyphicon-log-out'></span> Sign out</a></li>

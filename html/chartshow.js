@@ -22,14 +22,35 @@ function get_data_range() {
 
 
  function download_chart() {
+let base64Image;
+let chartTypeName;
+  if (massPopChart == null) {
+    alert("No chart to download");
+    return;
+  }
+  if (document.getElementById('temperature').style.display == 'inline-block') {
+     base64Image = massPopChart.toBase64Image();
+     chartTypeName = "temperature";
+  }
+  else if (document.getElementById('pressure').style.display == 'inline-block') {
+     base64Image = massPopChart2.toBase64Image();
+     chartTypeName = "pressure";
+  }
+  else if (document.getElementById('humidity').style.display == 'inline-block') {
+     base64Image = massPopChart1.toBase64Image();
+     chartTypeName = "humidity";
+  }
+  else if (document.getElementById('air_quality').style.display == 'inline-block') {
+     base64Image = massPopChart3.toBase64Image();
+     chartTypeName  = "air_quality";
+  }
 
-  let base64Image = massPopChart.toBase64Image();
 
   let currentDate = new Date();
   let timezoneOffset = currentDate.getTimezoneOffset(); 
   let adjustedDate = new Date(currentDate.getTime() - timezoneOffset);
 
-  let fileName = 'chart_' + adjustedDate.toLocaleString() + '.png';
+let fileName = 'chart_' + adjustedDate.toLocaleString() + '_' + chartTypeName + '.png';
 
   let downloadLink = document.createElement('a');
   downloadLink.href = base64Image;
